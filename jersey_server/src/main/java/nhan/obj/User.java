@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "users")
-public class User implements Serializable {
+public class User extends BaseObj implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     private Integer id;
