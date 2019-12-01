@@ -1,5 +1,7 @@
 # Simple_Datatable
-React as front-end
+React for front-end
 
-I will try several servers technologies for this application as back-end
+I will try several servers technologies for this application for back-end
 - jersey_server: Java Jersey for RESTful API
+- spring_server: Java Spring for RESTful API?
+- php_server: PHP for RESTful API?
