@@ -1,22 +1,22 @@
 package nhan.obj;
 
 
-public class Test {
-    private String id;
+public class DataTest {
+    private Integer id;
     private String name;
     private Integer age;
 
-    public Test(String id, String name, Integer age) {
+    public DataTest(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
