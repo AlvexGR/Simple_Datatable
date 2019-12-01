@@ -4,29 +4,19 @@ import DataTable from "./components/Datatable";
 
 class App extends React.Component {
   state = {
-    users: [
-      {
-        age: 23,
-        id: 1,
-        name: "Nguyen Ngoc Nhan"
-      },
-      {
-        age: 23,
-        id: 2,
-        name: "Nguyen Ngoc Nhan"
-      },
-      {
-        age: 23,
-        id: 3,
-        name: "Nguyen Ngoc Nhan"
-      },
-      {
-        age: 23,
-        id: 4,
-        name: "Nguyen Ngoc Nhan"
-      }
-    ]
+    users: []
   };
+
+  componentDidMount() {
+    fetch("http://localhost:1503/simple_datatable/api/test")
+      .then(results => results.json())
+      .then(data => {
+        this.setState({
+          users: data
+        })
+      });
+  }
+
   render() {
     return (
       <div className="App">

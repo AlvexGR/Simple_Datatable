@@ -1,6 +1,8 @@
 package nhan.api;
 
+import nhan.db.UserDao;
 import nhan.obj.DataTest;
+import nhan.obj.User;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,21 +13,14 @@ import java.util.List;
 
 @Path("/test")
 public class TestService {
-
+    private UserDao userDao;
+    public TestService() {
+        userDao = new UserDao();
+    }
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<DataTest> getData() {
-        List<DataTest> lstDt = new ArrayList<>();
-        DataTest test = new DataTest(1, "Nguyen Ngoc Nhan", 23);
-        DataTest test1 = new DataTest(2, "Nguyen Ngoc Nhan", 23);
-        DataTest test2 = new DataTest(3, "Nguyen Ngoc Nhan", 23);
-        DataTest test3 = new DataTest(4, "Nguyen Ngoc Nhan", 23);
-
-        lstDt.add(test);
-        lstDt.add(test1);
-        lstDt.add(test2);
-        lstDt.add(test3);
-
+    public List<User> getData() {
+        List<User> lstDt = userDao.getAllBy();
         return lstDt;
     }
 }
