@@ -2,11 +2,11 @@ package nhan.api;
 
 import nhan.db.UserDao;
 import nhan.dto.User;
-import nhan.obj.UserResponse;
+import nhan.obj.UserListResponse;
+import nhan.util.ServerUtil;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
 
 @Path("/users")
 public class UserService {
@@ -16,9 +16,35 @@ public class UserService {
     }
 
     @GET
+    @Path("/page/{page_num}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getAll() {
-        return userDao.getAll();
+    public UserListResponse getAll(@PathParam("page_num") Integer page) {
+        try {
+            if (page == null) {
+                page = 1;
+            }
+            int recordsPerPage = 4;
+            UserListResponse userListResponse = userDao.getAll(page, recordsPerPage);
+            if (page != 1) {
+                userListResponse.setFirstPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/1");
+            }
+            int lastPage = userListResponse.getTotalPages();
+            if (page != lastPage) {
+                userListResponse.setLastPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + lastPage);
+            }
+            int nextPage = page + 1;
+            if (nextPage <= lastPage) {
+                userListResponse.setNextPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + nextPage);
+            }
+
+            int prevPage = page - 1;
+            if (prevPage >= 1) {
+                userListResponse.setPrevPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + prevPage);
+            }
+            return userListResponse;
+        } catch (Exception ex) {
+            return new UserListResponse();
+        }
     }
 
     @GET
