@@ -1,7 +1,7 @@
 package nhan.api;
 
 import nhan.db.UserDao;
-import nhan.obj.User;
+import nhan.dto.User;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -5,7 +5,7 @@
 
     <persistence-unit name="simple_datatable" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <class>nhan.obj.User</class>
+        <class>nhan.dto.User</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />

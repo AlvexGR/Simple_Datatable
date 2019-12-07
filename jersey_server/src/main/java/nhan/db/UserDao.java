@@ -1,6 +1,6 @@
 package nhan.db;
 
-import nhan.obj.User;
+import nhan.dto.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -13,7 +13,7 @@ public class UserDao extends BaseDao {
         TypedQuery<User> result = entityManager.createQuery(query, User.class);
         try {
             return result.getResultList();
-        } catch(Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         } finally {

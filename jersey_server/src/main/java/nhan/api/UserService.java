@@ -1,7 +1,8 @@
 package nhan.api;
 
 import nhan.db.UserDao;
-import nhan.obj.User;
+import nhan.dto.User;
+import nhan.obj.UserResponse;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,7 +17,7 @@ public class UserService {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getById() {
+    public List<User> getAll() {
         return userDao.getAll();
     }
 
@@ -28,6 +29,7 @@ public class UserService {
     }
 
     @POST
+    @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Boolean register() {

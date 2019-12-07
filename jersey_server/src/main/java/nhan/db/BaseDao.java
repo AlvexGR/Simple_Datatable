@@ -1,6 +1,6 @@
 package nhan.db;
 
-import nhan.obj.BaseObj;
+import nhan.dto.BaseObj;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

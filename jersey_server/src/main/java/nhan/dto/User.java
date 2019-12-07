@@ -1,4 +1,4 @@
-package nhan.obj;
+package nhan.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,27 +27,13 @@ public class User extends BaseObj implements Serializable {
     private String phoneNumber;
 
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private String dateOfBirth;
 
     @Column(name = "gender")
     private Boolean gender;
 
     @Column(name = "active")
     private Boolean active;
-
-    public User() {
-    }
-
-    public User(Integer id, String firstName, String lastName, String email, String phoneNumber, Date dateOfBirth, Boolean gender, Boolean active) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.dateOfBirth = dateOfBirth;
-        this.gender = gender;
-        this.active = active;
-    }
 
     public Integer getId() {
         return id;
@@ -89,11 +75,11 @@ public class User extends BaseObj implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDateOfBirth() {
+    public String getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

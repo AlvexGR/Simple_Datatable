@@ -1,4 +1,4 @@
-package nhan.obj;
+package nhan.dto;
 
 
 public class DataTest {
