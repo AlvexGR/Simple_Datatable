@@ -4,27 +4,47 @@ import DataTable from "./components/Datatable";
 import UserService from "./services/userService";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.goToPage = this.goToPage.bind(this);
+  }
+
   userService = new UserService();
   state = {
-    currentPage: 1,
-    firstPage: 1,
-    lastPage: 1,
-    nextPage: 1,
-    prevPage: 1,
-    totalPages: 20,
+    currentPage: undefined,
+    firstPage: undefined,
+    lastPage: undefined,
+    nextPage: undefined,
+    prevPage: undefined,
+    totalPages: undefined,
     users: []
   };
 
   async componentDidMount() {
-    const data = await this.userService.getAll(1);
-    this.setState({ users: data.users });
-    console.log(this.state.users);
+    await this.goToPage(1);
+  }
+
+  async goToPage(page) {
+    if (!page) {
+      return;
+    }
+    const data = await this.userService.getAll(page);
+    this.setState({
+      currentPage: data.currentPage,
+      firstPage: data.firstPage,
+      lastPage: data.lastPage,
+      nextPage: data.nextPage,
+      prevPage: data.prevPage,
+      totalPages: data.totalPages,
+      users: data.users
+    });
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className="App">
-        <DataTable users={this.state.users}></DataTable>
+        <DataTable data={this.state} goToPage={this.goToPage} />
       </div>
     );
   }

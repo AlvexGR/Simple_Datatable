@@ -20,26 +20,26 @@ public class UserService {
     @Produces(MediaType.APPLICATION_JSON)
     public UserListResponse getAll(@PathParam("page_num") Integer page) {
         try {
-            if (page == null) {
+            if (page == null || page < 0) {
                 page = 1;
             }
-            int recordsPerPage = 4;
+            int recordsPerPage = 10;
             UserListResponse userListResponse = userDao.getAll(page, recordsPerPage);
             if (page != 1) {
-                userListResponse.setFirstPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/1");
+                userListResponse.setFirstPage(1);
             }
             int lastPage = userListResponse.getTotalPages();
             if (page != lastPage) {
-                userListResponse.setLastPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + lastPage);
+                userListResponse.setLastPage(lastPage);
             }
             int nextPage = page + 1;
             if (nextPage <= lastPage) {
-                userListResponse.setNextPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + nextPage);
+                userListResponse.setNextPage(nextPage);
             }
 
             int prevPage = page - 1;
             if (prevPage >= 1) {
-                userListResponse.setPrevPage(ServerUtil.LOCAL_HOST + "/" + ServerUtil.USER_API + "/page/" + prevPage);
+                userListResponse.setPrevPage(prevPage);
             }
             return userListResponse;
         } catch (Exception ex) {

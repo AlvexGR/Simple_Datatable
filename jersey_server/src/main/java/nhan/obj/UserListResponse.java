@@ -7,10 +7,10 @@ import java.util.List;
 public class UserListResponse {
     private Integer totalPages;
     private Integer currentPage;
-    private String firstPage;
-    private String lastPage;
-    private String prevPage;
-    private String nextPage;
+    private Integer firstPage;
+    private Integer lastPage;
+    private Integer prevPage;
+    private Integer nextPage;
     private List<User> users;
 
     public Integer getTotalPages() {
@@ -29,35 +29,35 @@ public class UserListResponse {
         this.currentPage = currentPage;
     }
 
-    public String getFirstPage() {
+    public Integer getFirstPage() {
         return firstPage;
     }
 
-    public void setFirstPage(String firstPage) {
+    public void setFirstPage(Integer firstPage) {
         this.firstPage = firstPage;
     }
 
-    public String getLastPage() {
+    public Integer getLastPage() {
         return lastPage;
     }
 
-    public void setLastPage(String lastPage) {
+    public void setLastPage(Integer lastPage) {
         this.lastPage = lastPage;
     }
 
-    public String getPrevPage() {
+    public Integer getPrevPage() {
         return prevPage;
     }
 
-    public void setPrevPage(String prevPage) {
+    public void setPrevPage(Integer prevPage) {
         this.prevPage = prevPage;
     }
 
-    public String getNextPage() {
+    public Integer getNextPage() {
         return nextPage;
     }
 
-    public void setNextPage(String nextPage) {
+    public void setNextPage(Integer nextPage) {
         this.nextPage = nextPage;
     }
 

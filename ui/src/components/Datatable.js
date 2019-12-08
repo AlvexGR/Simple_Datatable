@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import Paging from "./Paging";
 
 class DataTable extends Component {
   renderDataInTable() {
-    return this.props.users.map((user, i) => {
+    return this.props.data.users.map((user, i) => {
       return (
         <tr key={i}>
           <td>{i + 1}</td>
@@ -20,6 +21,7 @@ class DataTable extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="container-fluid">
         <div className="row">
@@ -42,6 +44,17 @@ class DataTable extends Component {
               </thead>
               <tbody>{this.renderDataInTable()}</tbody>
             </table>
+            <div className="float-right">
+              <Paging
+                currentPage={this.props.data.currentPage}
+                firstPage={this.props.data.firstPage}
+                lastPage={this.props.data.lastPage}
+                nextPage={this.props.data.nextPage}
+                prevPage={this.props.data.prevPage}
+                totalPages={this.props.data.totalPages}
+                goToPage={this.props.goToPage}
+              />
+            </div>
           </div>
           <div className="col-md-2"></div>
         </div>
@@ -50,4 +63,4 @@ class DataTable extends Component {
   }
 }
 
-export default DataTable
+export default DataTable;
