@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Paging from "./Paging";
+import SearchBox from "./SearchBox";
 
 class DataTable extends Component {
   renderDataInTable() {
@@ -28,6 +29,9 @@ class DataTable extends Component {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <h3 className="text-center mb-3 mt-3">Simple Datatable</h3>
+            <div className="mb-3">
+              <SearchBox />
+            </div>
             <table className="table table-striped table-bordered">
               <thead className="thead-dark">
                 <tr>
